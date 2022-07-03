@@ -4,9 +4,10 @@
 -e .
 
 #dependencies
-dvc
 scikit-learn
 pandas
 tqdm
+mlflow
+
 
 

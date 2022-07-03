@@ -1,0 +1,12 @@
+name: mlflow-example
+
+conda_env: conda.yaml
+
+entry_points:
+      main:
+         command: 'python src/main.py'
+            
+      stage_01:
+         parameters:
+            config: {type: str, default: configs/config.yaml}
+         command: 'python src/stage01_load_and_save_data.py --config= {config}''

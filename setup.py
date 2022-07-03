@@ -3,14 +3,14 @@ from setuptools import setup
 with open("README.md", "r", encoding= 'utf-8') as fh:
     long_description = fh.read()
 
-REPO_NAME = 'simple Linear Regression pipeline'
+REPO_NAME = 'mlflow simple Linear Regression pipeline'
 AUTHOR_USE_NAME = "ChanduKReddy99"
 AUTHOR_EMAIL = "chanduk.amical@gmail.com"
-URL= "https://github.com/ChanduKReddy99/project1"
+URL= "https://github.com/ChanduKReddy99/mlflow-LinearRegression"
 PYTHON_REQUIRES = '>=3.6'
 SRC_REPO= "src"
 INSTALL_REQUIRES = [
-    'dvc',
+    'mlflow',
     'pandas',
     'scikit-learn',
     'tqdm'
@@ -22,7 +22,7 @@ setup(
     version='0.0.1',
     author=AUTHOR_USE_NAME,
     author_email=AUTHOR_EMAIL,
-    description='Simple Linear Regression pipeline',
+    description='mlflow simple Linear Regression pipeline',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url=URL,
