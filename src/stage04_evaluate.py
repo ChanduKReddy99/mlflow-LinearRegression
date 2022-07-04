@@ -1,10 +1,12 @@
 import os
 import argparse
+from pyexpat import model
 import pandas as pd
 import logging
 import joblib
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from src.utils.common_utils import read_config, save_reports
+import mlflow
 
 
 
@@ -51,6 +53,9 @@ def evaluate(config_path:str) -> None:
     predicted_values= lr.predict(x_test)
 
     rmse, r2, mae= eval_metrics(y_test, predicted_values)
+    mlflow.log_metric('rmse', rmse)
+    mlflow.log_metric('r2', r2)
+    mlflow.log_metric('mae', mae)
 
     scores= {
         'rmse': rmse,
@@ -59,6 +64,10 @@ def evaluate(config_path:str) -> None:
     }
 
     save_reports(scores_file, scores)
+
+    mlflow.sklearn.eval_and_log_metrics(lr, predicted_values, scores, prefix='eval_')
+   
+    
     
 
 if __name__ == '__main__':

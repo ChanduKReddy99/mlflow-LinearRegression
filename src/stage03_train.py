@@ -5,6 +5,8 @@ import logging
 from sklearn.linear_model import LinearRegression
 from src.utils.common_utils import read_config, create_dirs, save_reports
 import joblib
+import mlflow
+import mlflow.sklearn
 
 
 
@@ -61,10 +63,12 @@ def train_model(config_path: str, params_path:str) -> None:
         'intercept': intercept,
         'coefficients': coefficients
     }
-
+    
     save_reports(params_file, params)
+    mlflow.log_param('params', params)
 
-    joblib.dump(lr, model_path)
+    # joblib.dump(lr, model_path)
+    mlflow.sklearn.log_model('model', lr)
 
     
 

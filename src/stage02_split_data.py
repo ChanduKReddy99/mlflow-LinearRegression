@@ -4,7 +4,7 @@ import argparse
 import logging
 from sklearn.model_selection import train_test_split
 from src.utils.common_utils import read_config, create_dirs, save_local_df,clean_prev_dirs_if_exists
-
+import mlflow
 
 logging.basicConfig(
     filename= os.path.join('logs', 'running_logs.log'),
@@ -40,6 +40,8 @@ def split_and_save_data(config_path):
     base= config['base']
     split_ratio= base['test_size']
     random_seed= base['random_state']
+    mlflow.log_param('split_ratio', split_ratio)
+    mlflow.log_param('random_seed', random_seed)
 
     df= pd.read_csv(raw_local_data, sep=',')
 
