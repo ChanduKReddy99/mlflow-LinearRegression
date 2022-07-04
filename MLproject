@@ -9,4 +9,20 @@ entry_points:
       stage_01:
          parameters:
             config: {type: str, default: configs/config.yaml}
-         command: 'python src/stage01_load_and_save_data.py --config= {config}''
+         command: 'python src/stage01_load_and_save_data.py --config={config}'
+
+      stage_02:
+         parameters:
+            config: {type: str, default: configs/config.yaml}
+         command: 'python src/stage02_split_data.py --config= {config}'
+
+      stage_03:
+         parameters:
+            config: {type: str, default: configs/config.yaml}
+            params: {type: str, default: params.yaml}
+         command: 'python src/stage03_train.py --config= {config} --params= {params}'
+
+      stage_04:
+         parameters:
+            config: {type: str, default: configs/config}
+         command: 'python src/stage04_evaluate.py --config= {config}'

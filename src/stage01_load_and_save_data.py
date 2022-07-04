@@ -15,6 +15,8 @@ logging.basicConfig(
     filemode='a'
 )
 
+
+
 def get_data(config_path: str) -> None:
     """this method Loads the data from the source dir and saves it to local dir as csv file by reading config.yaml.
 
@@ -47,7 +49,7 @@ if __name__ == "__main__":
     try:
         logging.info('\n********************************')
         logging.info('>>>>>> stage 01 load and save data started..!!')
-        get_data(parsed_args.config)
+        get_data(config_path=parsed_args.config)
         logging.info('>>>>>> stage 01 load and save data completed..!!<<<<<<\n')
     
     except Exception as e:
